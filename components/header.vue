@@ -1,10 +1,12 @@
-
 <template>
-    <header :class="['fixed top-0', 'left-0 w-full', 'z-50', headerBg, headerShadow, textColor]" class="transition ease-in-out duration-300" >
+    <header :class="['group', 'fixed top-0', 'left-0 w-full', 'z-50', 'py-0', '[&.transparent]:py-5', 'bg-white', { 'transparent': transparent }, '[&.transparent]:bg-transparent']" class="transition ease-in-out duration-500">
         <div class="container mx-auto">
             <div class="flex items-center justify-between py-4">
                 <div>
-                    <a href="/" class="text-lg font-bold">Logo</a>
+                    <a href="/">
+                        <span v-if="transparent" class="text-white text-2xl font-bold">Logo Placeholder</span>
+                        <span v-else class="text-black text-2xl font-bold">Logo Placeholder</span>
+                    </a>
                 </div>
                 <nav>
                     <Navigation/>
@@ -15,22 +17,20 @@
 </template>
 
 <script setup>
-    const headerBg = ref('bg-transparent');
-    const headerShadow = ref('shadow-none');
-    const textColor = ref('text-white');
+    import { ref, onMounted } from 'vue';
+
+    const transparent = ref( false );
+
+    const handleScroll = () => {
+        if (window.scrollY > 100) {
+            transparent.value = false;
+        } else {
+            transparent.value = true;
+        }
+    };
 
     onMounted(() => {
-        window.addEventListener('scroll', () => {
-            if(window.scrollY > 50) {
-                headerBg.value = 'bg-white';
-                headerShadow.value = 'shadow-md';
-                textColor.value = 'text-black';
-            } else {
-                headerBg.value = 'bg-transparent';
-                headerShadow.value = 'shadow-none';
-                textColor.value = 'text-white';
-            }
-        });
+        handleScroll();
+        window.addEventListener('scroll', handleScroll);
     });
 </script>
-    

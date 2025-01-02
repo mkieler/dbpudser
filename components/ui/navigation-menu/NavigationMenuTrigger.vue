@@ -23,7 +23,7 @@ const forwardedProps = useForwardProps(delegatedProps)
 <template>
   <NavigationMenuTrigger
     v-bind="forwardedProps"
-    :class="cn(navigationMenuTriggerStyle(), 'group', props.class)"
+    :class="cn('group', 'flex items-center', props.class)"
   >
     <slot />
     <ChevronDown
