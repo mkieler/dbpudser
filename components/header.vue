@@ -1,5 +1,5 @@
 <template>
-    <header :class="['group', 'fixed top-0', 'left-0 w-full', 'z-50', 'py-0', '[&.transparent]:py-5', 'bg-white', { 'transparent': transparent }, '[&.transparent]:bg-transparent']" class="transition ease-in-out duration-500">
+    <header :class="['group', 'fixed top-0', 'left-0 w-full', 'z-50', 'drop-shadow', '[&.transparent]:drop-shadow-none', 'bg-white', { 'transparent': transparent }, '[&.transparent]:bg-transparent']" class="transition ease-in-out duration-500">
         <div class="container mx-auto">
             <div class="flex items-center justify-between py-4">
                 <div>
@@ -19,7 +19,7 @@
 <script setup>
     import { ref, onMounted } from 'vue';
 
-    const transparent = ref( false );
+    const transparent = ref( true );
 
     const handleScroll = () => {
         if (window.scrollY > 100) {
@@ -34,3 +34,14 @@
         window.addEventListener('scroll', handleScroll);
     });
 </script>
+
+<style scoped>
+    header{
+        padding: 0;
+        transition: all 0.3s;
+
+        &.transparent{
+            padding: 1rem 0;
+        }
+    }
+</style>

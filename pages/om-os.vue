@@ -1,3 +1,5 @@
 <template>
-    hello
+    <Hero bg="/img/om-os.jpg">
+
+    </Hero>
 </template>

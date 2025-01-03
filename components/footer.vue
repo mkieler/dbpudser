@@ -2,12 +2,12 @@
     <div class="px-5">
         <div class="bg-sky-950 py-5 flex items-center flex-col sm:flex-row text-center sm:text-left justify-between container rounded-xl -mb-10 z-10 relative text-white">
             <div>
-                <span class="text-xl md:text-2xl font-bold">Kontakt os i dag for et uforpligtende tilbud</span>
-                <span class="hidden sm:block">Vi sidder klar til at hjælpe</span>
+                <span class="text-xl md:text-2xl font-bold">Få et uforpligtende tilbud</span>
+                <span class="hidden sm:block">Klik på knappen og få en samlet pris via vores tilbudsformular</span>
             </div>
 
 
-            <Button class="mt-3 sm:mt-0 sm:p-6 sm:text-xl">Kontakt os</Button>
+            <Button class="mt-3 sm:mt-0 sm:p-6 sm:text-xl">Få et tilbud</Button>
         </div>
     </div>
     <footer class="bg-gray-900 text-white">

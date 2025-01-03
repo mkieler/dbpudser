@@ -1,4 +1,6 @@
-
+<script setup>
+    const { serviceItems } = useServices();
+</script>
 
 
 <template>
@@ -15,77 +17,23 @@
                 }"
             >
                 <CarouselContent>
-                    <CarouselItem class="md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                    <CarouselItem v-for="serviceItem in serviceItems" class="md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                         <Card>
                             <CardHeader>
-                                <CardTitle>Vinduespolering</CardTitle>
-                                <CardDescription>Card Description</CardDescription>
+                                <CardTitle>{{ serviceItem.name }}</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                {{ serviceItem.shortDescription }}
                             </CardContent>
                             <CardFooter>
-                                <Button class="w-full">Læs mere</Button>
-                            </CardFooter>
-                        </Card>
-                    </CarouselItem>
-                    <CarouselItem class="md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Rengøring</CardTitle>
-                                <CardDescription>Card Description</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </CardContent>
-                            <CardFooter>
-                                <Button class="w-full">Læs mere</Button>
-                            </CardFooter>
-                        </Card>
-                    </CarouselItem>
-                    <CarouselItem class="md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Algebehandling</CardTitle>
-                                <CardDescription>Card Description</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </CardContent>
-                            <CardFooter>
-                                <Button class="w-full">Læs mere</Button>
-                            </CardFooter>
-                        </Card>
-                    </CarouselItem>
-                    <CarouselItem class="md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Noget andet</CardTitle>
-                                <CardDescription>Card Description</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </CardContent>
-                            <CardFooter>
-                                <Button class="w-full">Læs mere</Button>
-                            </CardFooter>
-                        </Card>
-                    </CarouselItem>
-                    <CarouselItem class="md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Noget andet</CardTitle>
-                                <CardDescription>Card Description</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </CardContent>
-                            <CardFooter>
-                                <Button class="w-full">Læs mere</Button>
+                                <Button class="w-full">
+                                    <a :href="`services/${serviceItem.slug}`">Læs mere</a>
+                                </Button>
                             </CardFooter>
                         </Card>
                     </CarouselItem>
                 </CarouselContent>
+
                 <CarouselPrevious />
                 <CarouselNext />
             </Carousel>

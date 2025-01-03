@@ -23,15 +23,17 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
+const { serviceItems } = useServices();
 
 const menuItems = [
   { title: 'Forside', href: '/' },
   { title: 'Services',
-    items: [
-      { title: 'Vinduespolering', href: '/' },
-      { title: 'Rengøring', href: '/' },
-      { title: 'Noget andet', href: '/' },
-    ],
+    items: serviceItems.map((service) => {
+        return {
+            title: service.name,
+            href: `/services/${service.slug}`,
+        }
+    }),
   },
   { title: 'Om os', href: '/om-os' },
   { title: 'Kontakt', href: '/kontakt' },
@@ -42,7 +44,7 @@ const menuItems = [
 <template>
     <Sheet>
         <SheetTrigger class="bg-transparent md:hidden">
-            <font-awesome :icon="faBars" class="text-2xl" />
+            <font-awesome :icon="faBars" class="text-2xl text-white" />
         </SheetTrigger>
         <SheetContent>
             <ul class="text-slate-700 font-bold flex flex-col gap-5 mt-5">
@@ -69,11 +71,11 @@ const menuItems = [
         </SheetContent>
   </Sheet>
 
-    <NavigationMenu class="hidden md:flex text-base text-black group-[.transparent]:text-slate-300">
+    <NavigationMenu class="hidden md:flex text-base text-slate-500 group-[.transparent]:text-slate-300">
         <NavigationMenuList>
             <NavigationMenuItem v-for="item in menuItems" :key="item.title">
                 <template v-if="item.items">
-                    <NavigationMenuTrigger class='hover:text-white font-normal [&.router-link-active]:text-white [&.router-link-active]:font-bold'>Services</NavigationMenuTrigger>
+                    <NavigationMenuTrigger class='desktop-nav-link font-normal [&.router-link-active]:font-bold'>Services</NavigationMenuTrigger>
                     <NavigationMenuContent class="bg-white text-black">
                         <ul>
                             <li v-for="subItem in item.items">
@@ -87,21 +89,48 @@ const menuItems = [
                     v-else 
                     :to="item.href" 
                     :class="[
+                        'desktop-nav-link',
                         'p-4',
                         'font-normal',
                         'bg-transparent', 
                         'hover:bg-transparent', 
                         'hover:text-white',
-                        '[&.router-link-active]:text-white',
-                        '[&.router-link-active.group-[.transparent]]:text-white',
-                        '[&.group-[.transparent]]:text-black',
-                        '[&.router-link-active]:font-bold',
                     ]"
                     >
                     {{ item.title }}
                 </NuxtLink>
                 
             </NavigationMenuItem>
+            <NavigationMenuItem>
+                <Button as-child>
+                    <a href="/tilbud" class="">Få et tilbud</a>
+                </Button>
+            </NavigationMenuItem>
         </NavigationMenuList>
     </NavigationMenu>
 </template>
+
+<style>
+    .desktop-nav-link{
+        &:hover{
+            color: black;
+        }
+    
+        &.router-link-active{
+            color: black;
+            font-weight: bold;
+        }
+    }
+
+    .transparent{
+        & .desktop-nav-link {
+            &:hover{
+                color: white;
+            }
+        
+            &.router-link-active{
+                color: white;
+            }
+        }
+    }
+</style>
