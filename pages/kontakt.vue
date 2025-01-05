@@ -32,13 +32,13 @@
         </div>
         <Tabs default-value="quote" class="flex-1 bg-white drop-shadow rounded md:-mt-32 z-10">
             <TabsList class="grid w-full grid-cols-2 mb-2 p-2">
-                <TabsTrigger value="quote" class="p-5">
+                <TabsTrigger value="quote" class="p-5 border-2 border-transparent data-[state=active]:border-primary">
                     <div class="flex flex-col">
                         <span class="text-lg">Få et tilbud</span>
                         <span class="text-sm text-slate-600 font-normal">Få en samlet pris med vores tilbudsformular</span>
                     </div>
                 </TabsTrigger>
-                <TabsTrigger value="message" class="p-5">
+                <TabsTrigger value="message" class="p-5 border-2 border-transparent data-[state=active]:border-primary">
                     <div class="flex flex-col">
                         <span class="text-lg">Send en besked</span>
                         <span class="text-sm text-slate-600 font-normal">Vi sidder klar til at hjælpe</span>
